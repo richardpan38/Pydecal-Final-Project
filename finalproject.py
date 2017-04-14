@@ -6,4 +6,5 @@ class Galaxy(object):
 		self.avglamb = avglamb
 		self.deltalamb = deltalamb
 		self.extent = extent
+Hello 
 
