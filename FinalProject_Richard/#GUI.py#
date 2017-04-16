@@ -1,0 +1,4 @@
+ximport tkinter as tk
+class RotationCurves()
+
+
