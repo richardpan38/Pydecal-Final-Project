@@ -12,6 +12,7 @@ def get_angdist(rshift):
     Da = (Dm/(1+rshift))
     Da = Da * (3.0*10**(22))
     return Da
+    print('Da = ' + Da)
 
 def conv_vertext(vertext):
     vertext = (vertext * 0.1185 * np.pi) / (3600 * 180)
@@ -19,6 +20,8 @@ def conv_vertext(vertext):
 
 def get_radi(Da,vertext):
     radi = (Da * vertext) / 2
+    return radi
+    print(radi)
 
 def get_vel(delt_wl,avg_wl):
     vel = (delt_wl * np.c) / (avg_wl * 2)
@@ -27,3 +30,6 @@ def get_vel(delt_wl,avg_wl):
 def get_mass(radi,vel):
     mass = (radi * (vel**2)) / np.G
     return mass
+
+
+get_angdist(0.5)
