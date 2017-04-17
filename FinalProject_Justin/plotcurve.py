@@ -3,9 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 effect_mass = 0
-effect_velocity = 0
+vel = 0
+effect_velocity = [1,vel]
 radi = 0
-effect_radius = [0,radi]
+effect_radius = [1,radi]
 
 def new_mass(mass, radi):
     effect_mass = mass * (effect_radius)**3 / radi**3
@@ -17,9 +18,9 @@ def new_vel(effect_mass, effect_radius):
 
 
 
-x = [0,effect_radius]
+x = effect_radius
 y = effect_velocity
 
 plt.plot(x,y)
-plt.axis([0, 100000000, 0, 100000000000])
+plt.axis([0, 1000000000, 0, 100000000000])
 plt.show()
