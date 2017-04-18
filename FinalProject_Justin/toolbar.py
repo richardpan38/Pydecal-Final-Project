@@ -1,11 +1,10 @@
-from tkinter import Tk, Frame, Menu
-
+from tkinter import *
 
 
 class Example(Frame):
 
-    def __init__(self, parent):
-        Frame.__init__(self, parent)   
+    def __init__(self,*args, **kwargs):
+        Frame.__init__(self, *args, **kwargs)   
          
         self.parent = parent        
         self.UI()
@@ -44,13 +43,5 @@ class Example(Frame):
         #textObj.insert(INSERT, file.read())
         #file.close()    
 
-def main():
-  
-    root = Tk()
-    root.geometry("250x150+300+300")
-    app = Example(root)
-    root.mainloop()  
-
-
-if __name__ == '__main__':
-    main()    
+app = Example()
+app.mainloop()
