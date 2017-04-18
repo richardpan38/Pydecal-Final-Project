@@ -5,12 +5,6 @@ class Example(Frame):
 
     def __init__(self,*args, **kwargs):
         Frame.__init__(self, *args, **kwargs)
-
-        parent = None
-        self.parent = parent
-        self.UI()
-
-
     def UI(self):
 
         self.parent.title("Menu")
