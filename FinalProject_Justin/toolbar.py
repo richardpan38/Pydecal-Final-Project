@@ -4,12 +4,7 @@ from tkinter import *
 class Example(Frame):
 
     def __init__(self,*args, **kwargs):
-        Frame.__init__(self, *args, **kwargs)   
-         
-        self.parent = parent        
-        self.UI()
-        
-        
+        Frame.__init__(self, *args, **kwargs)          
     def UI(self):
       
         self.parent.title("Menu")

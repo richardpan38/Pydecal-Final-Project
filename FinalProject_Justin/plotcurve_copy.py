@@ -25,3 +25,4 @@ def graph(a,b):
 	plt.plot(x,y)
 	plt.axis([0, 1000000000, 0, 100000000000])
 	plt.show()
+graph(5,3)
