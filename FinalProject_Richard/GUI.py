@@ -1,16 +1,16 @@
 import tkinter as tk
 from tkinter import *
 from tkinter.messagebox import *
-import matplotlib 
+import matplotlib
 matplotlib.use("TkAgg")
 #from matplotlib.backends.backend_TkAgg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-from matplotlib.figure import Figure 
-import numpy as np 
+from matplotlib.figure import Figure
+import numpy as np
 import scipy.constants as sp
 
 LARGE_FONT = ("Verdana", 12)
 
-class RotationCurves(tk.Tk): 
+class RotationCurves(tk.Tk):
 	def __init__(self, *args, **kwargs):
 		tk.Tk.__init__(self)
 		tk.Tk.wm_title(self, "Rotation Curves Client")
@@ -24,12 +24,12 @@ class RotationCurves(tk.Tk):
 		self.frames[StartPage] = frame
 		frame.grid(row = 0, column = 0, sticky = "nsew")
 		self.show_frame(StartPage)
-	
+
 	def show_frame(self, cont):
 		frame = self.frames[cont]
 		frame.tkraise()
 
-	
+
 
 def graph():
 	Solve()
@@ -48,17 +48,18 @@ def combine_funcs(*funcs):
 class StartPage(Frame): # must need line
 	def __init__(self, parent, controller): #must need line
 		tk.Frame.__init__(self, parent) #Must need line
-		#menubar = Menu(self)
-		#self.config(menu=menubar)
-		#fileMenu = Menu(menubar)
-		#fileMenu.add_command(label="Exit", command=self.onExit)
-		##fileMenu.add_command(label="Save", command=self.filewrite)
-		#menubar.add_cascade(label="File", menu=fileMenu)
-		#editMenu = Menu(menubar)
-		#menubar.add_cascade(label="Edit", menu=editMenu).add_command(label="Universe", command=self.onExit)
-		#viewMenu = Menu(menubar)
-		#menubar.add_cascade(label="View", menu=editMenu)
-		#viewMenu.add_command(label="Graph", command=self.onExit)
+		menubar = Menu(self)
+		self.parent.title("Menu")
+		self.parent.config(menu=menubar)
+		fileMenu = Menu(menubar)
+		fileMenu.add_command(label="Exit", command=self.onExit)
+		fileMenu.add_command(label="Save", command=self.filewrite)
+		menubar.add_cascade(label="File", menu=fileMenu)
+		editMenu = Menu(menubar)
+		menubar.add_cascade(label="Edit", menu=editMenu).add_command(label="Universe", command=self.onExit)
+		viewMenu = Menu(menubar)
+		menubar.add_cascade(label="View", menu=editMenu)
+		viewMenu.add_command(label="Graph", command=self.onExit)
 		Instruction = tk.Label(self, text = 'Enter Values', font = LARGE_FONT).grid(row = 0, column = 3, sticky = W)
 		Redshift = tk.Label(self, text = "Redshift:").grid(row = 1, column = 0, columnspan = 1,  sticky = W)
 		RedshiftBlank = Entry(self)
@@ -81,7 +82,7 @@ class StartPage(Frame): # must need line
 			check = tk.Label(sure, text = "Are you sure?", font = LARGE_FONT).grid(row = 0, column = 2, columnspan = 2, sticky = W)
 			sure.sure_yes = tk.Button(sure, text = "Yes", command = combine_funcs(sure.destroy, self.quit)).grid(row = 2, column = 3, sticky = W)
 			sure_no = tk.Button(sure, text = "No", command = sure.destroy).grid(row = 2, column = 4, sticky =W)
-		
+
 		def Solve(): #Popups when pressing solve
 			Solve = tk.Toplevel()
 			Solve.wm_title("Rotation Curves Client")
@@ -111,6 +112,12 @@ class StartPage(Frame): # must need line
 			text.insert( '4.0', "Galactic mass: ")
 			#text.insert( 4.20, Da )
 			Solve_quit = tk.Button(Solve, text = "Quit", command = Solve.destroy).grid(row = 7, column = 0, sticky = W)
+
+		def onExit(self):
+			self.quit()
+
+		def filewrite(self):
+			writeFile()
 		#f = Figure(figsize = (5,5), dpi = 100)
 		#canvas = FigureCanvasTkAgg(f, self)
 		#canvas.show()
@@ -118,4 +125,3 @@ class StartPage(Frame): # must need line
 
 app = RotationCurves()
 app.mainloop()
-
