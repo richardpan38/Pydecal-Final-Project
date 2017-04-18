@@ -8,7 +8,7 @@ def graph(a,b):
 	a = mass
 	b = radius
 	effect_velocity = [1,velocity]
-	#effect_mass = [1,mass]
+	effect_mass = [1,mass]
 	effect_radius = [1,radius]
 
 	def new_mass(mass, radius):
