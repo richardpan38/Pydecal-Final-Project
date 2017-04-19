@@ -31,6 +31,7 @@ class RotationCurves(tk.Tk):
 		fileMenu = tk.Menu(menubar, tearoff = 0 )
 		fileMenu.add_command(label="Exit", command=self.quit)
 		fileMenu.add_command(label="Save", command=self.popup)
+		fileMenu.add_command(label="Export", command=self.scribe)
 		menubar.add_cascade(label="File", menu=fileMenu)
 		editMenu = tk.Menu(menubar)
 		menubar.add_cascade(label="Edit", menu=editMenu)
@@ -60,5 +61,10 @@ class RotationCurves(tk.Tk):
 		B1 = ttk.Button(popup, text="Okay", command=self.quit)
 		B1.pack()
 		popup.mainloop()
+	def scribe(self):
+		text_file = open('valoutput.txt', 'a')
+		print('Values will appear here in next release.\n')
+		text_file.close()
+
 app = RotationCurves()
 app.mainloop()
