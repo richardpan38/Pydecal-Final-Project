@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter.messagebox import *
+import webbrowser as wb
 import matplotlib 
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
@@ -28,24 +29,39 @@ class RotationCurves(tk.Tk):
 		menubar = Menu(container)
 		tk.Tk.config(self, menu=menubar)
 		fileMenu = tk.Menu(menubar, tearoff = 0 )
-		fileMenu.add_command(label="Exit", command=lambda : sure())
+		fileMenu.add_command(label="New Window", command= popupmsg("Work in Progress!"))
 		fileMenu.add_command(label="Save", command= lambda: popupmsg("Work in Progress!"))
+		fileMenu.add_command(label="Open...", command= lambda: popupmsg("Work in Progress!"))
+		fileMenu.add_command(label="Exit", command= lambda: self.sure())
 		menubar.add_cascade(label="File", menu=fileMenu)
 		editMenu = tk.Menu(menubar)
 		menubar.add_cascade(label="Edit", menu=editMenu)
 		editMenu.add_command(label="Universe", command=lambda: popupmsg("Work in Progress!"))
+		editMenu.add_command(label="Copy", command=lambda: popupmsg("Work in Progress!"))
+		editMenu.add_command(label="Cut", command=lambda: popupmsg("Work in Progress!"))
+		editMenu.add_command(label="Paste", command=lambda: popupmsg("Work in Progress!"))
+		editMenu.add_command(label="Emoji & Symbols", command=lambda: popupmsg("Work in Progress!"))
 		viewMenu = tk.Menu(menubar)
 		menubar.add_cascade(label="View", menu=viewMenu)
 		viewMenu.add_command(label="Graph", command= lambda: popupmsg("Work in Progress!"))
+		viewMenu.add_command(label="Enter Fullscreen Mode", command= lambda: popupmsg("Work in Progress!"))
+		viewMenu.add_command(label="Minimize", command= lambda: popupmsg("Work in Progress!"))
+		viewMenu.add_command(label="Maximize", command= lambda: popupmsg("Work in Progress!"))
+		helpMenu = tk.Menu(menubar)
+		menubar.add_cascade(label="Help", menu=helpMenu)
+		helpMenu.add_command(label="Tutorial", command= lambda: popupmsg("Work in Progress!"))
+		helpMenu.add_command(label="Git repo", command=self.link)
+	def link(self):
+		wb.open('https://github.com/rpanman/Pydecal-Final-Project')
 	def show_frame(self, cont):
 		frame = self.frames[cont]
 		frame.tkraise()
-def sure():
-	sure = tk.Toplevel()
-	sure.wm_title("Exit")
-	check = tk.Label(sure, text = "Are you sure?", font = LARGE_FONT).grid(row = 0, column = 2, columnspan = 2, sticky = W)
-	sure_yes = tk.Button(sure, text = "Yes", command = combine_funcs(sure.destroy)).grid(row = 2, column = 3, sticky = W)
-	sure_no = tk.Button(sure, text = "No", command = sure.destroy).grid(row = 2, column = 4, sticky =W)
+	def sure(self):
+		sure = tk.Toplevel()
+		sure.wm_title("Exit")
+		check = tk.Label(sure, text = "Are you sure?", font = LARGE_FONT).grid(row = 0, column = 2, columnspan = 2, sticky = W)
+		sure_yes = tk.Button(sure, text = "Yes", command = combine_funcs(sure.destroy, self.destroy)).grid(row = 2, column = 3, sticky = W)
+		sure_no = tk.Button(sure, text = "No", command = sure.destroy).grid(row = 2, column = 4, sticky =W)
 
 def popupmsg(msg):
 	popupmsg = tk.Toplevel()
