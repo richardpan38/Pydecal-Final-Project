@@ -1,6 +1,6 @@
 import tkinter as tk
-from tkinter import ttk
-import webbrowser as wb
+from tkinter import ttk #add this to the main file
+import webbrowser as wb #add this to the main file
 from tkinter import *
 from tkinter.messagebox import *
 import matplotlib
